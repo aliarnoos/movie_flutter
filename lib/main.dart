@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       create: (context) => MovieRepositoryImpl(ApiService()),
       child: MaterialApp(
         title: 'Movie App',
+        debugShowCheckedModeBanner: false,
         home: BlocProvider<MovieCubit>(
           create: (context) => MovieCubit(context.read<MovieRepository>()),
           child: MovieScreen(),
