@@ -1,5 +1,3 @@
-import 'package:logger/logger.dart';
-
 import '../../services/api_service.dart';
 import '../models/movie_card.dart';
 
