@@ -6,21 +6,12 @@ A Flutter application that showcases trending movies, supporting infinite scroll
 
 This project was completed in less than 8 hours and represents my first entry into writing Flutter and Dart. Despite being new to these technologies, I found the experience enjoyable and the learning curve pleasantly manageable. I am eager to hear your feedback and look forward to improving and expanding my skills in this area.
 
-## Getting Started
+## Screenshots
 
-### Prerequisites
+Here are some screenshots of the app in action:
 
-- Flutter SDK
-- Android Studio or Visual Studio Code with Flutter and Dart plugins installed
-- Familiarity with Dart and Flutter framework
-
-### Installation
-
-1. Clone the repository:
-2. Navigate to the project directory:
-3. Install dependencies:
-
-
+![Home Screen](https://imgtr.ee/images/2024/07/25/47ffc64f397f930878ef1c4b10fec5c2.png "Home Screen")
+![Movie Details](https://imgtr.ee/images/2024/07/25/30c84b6760ad271c09769cb48c98bfc0.png "Movie Details")
 
 ## Architecture
 
