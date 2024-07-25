@@ -2,6 +2,10 @@
 
 A Flutter application that showcases trending movies, supporting infinite scrolling and detailed views for individual movies.
 
+## Personal Note
+
+This project was completed in less than 8 hours and represents my first entry into writing Flutter and Dart. Despite being new to these technologies, I found the experience enjoyable and the learning curve pleasantly manageable. I am eager to hear your feedback and look forward to improving and expanding my skills in this area.
+
 ## Getting Started
 
 ### Prerequisites
@@ -40,6 +44,12 @@ The application employs Clean Architecture principles for scalable, maintainable
   - **/widgets**: Reusable UI components.
 - **/services**
   - Service classes for external data interactions, such as APIs.
+
+
+
+## Why Cubit for State Management?
+
+Cubit was chosen for state management in this app for its simplicity and efficiency. It offers a streamlined approach compared to traditional BLoC. As someone writing Flutter and Dart code for the first time I found it easy to use and unerstand.
 
 ## Tools Used
 
