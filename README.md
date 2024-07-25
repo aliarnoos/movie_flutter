@@ -11,8 +11,8 @@ This project was completed in less than 8 hours and represents my first entry in
 Here are some screenshots of the app in action:
 
 <p float="left">
-  <img src="https://imgtr.ee/images/2024/07/25/47ffc64f397f930878ef1c4b10fec5c2.png" width="100" alt="Home Screen" title="Home Screen" />
-  <img src="https://imgtr.ee/images/2024/07/25/30c84b6760ad271c09769cb48c98bfc0.png" width="100" alt="Movie Details" title="Movie Details" />
+  <img src="https://imgtr.ee/images/2024/07/25/47ffc64f397f930878ef1c4b10fec5c2.png" width="400" alt="Home Screen" title="Home Screen" />
+  <img src="https://imgtr.ee/images/2024/07/25/30c84b6760ad271c09769cb48c98bfc0.png" width="400" alt="Movie Details" title="Movie Details" />
 </p>
 
 ## Architecture
