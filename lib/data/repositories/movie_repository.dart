@@ -1,8 +1,10 @@
+import 'package:logger/logger.dart';
+
 import '../../services/api_service.dart';
-import '../models/movie.dart';
+import '../models/movie_card.dart';
 
 abstract class MovieRepository {
-  Future<List<MovieModel>> getTrendingMovies();
+  Future<List<MovieCardModel>> getTrendingMovies();
 }
 
 class MovieRepositoryImpl implements MovieRepository {
@@ -11,11 +13,12 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this.apiService);
 
   @override
-  Future<List<MovieModel>> getTrendingMovies() async {
+  Future<List<MovieCardModel>> getTrendingMovies() async {
     try {
       final jsonData = await apiService.fetchTrendingMovies();
       return jsonData
-          .map<MovieModel>((json) => MovieModel.fromJson(json))
+          .toList()
+          .map<MovieCardModel>((json) => MovieCardModel.fromJson(json))
           .toList();
     } catch (e) {
       throw Exception('Failed to fetch movies: ${e.toString()}');

@@ -7,7 +7,7 @@ class MovieInitial extends MovieState {}
 class MovieLoading extends MovieState {}
 
 class MovieLoaded extends MovieState {
-  final List<MovieModel> movies;
+  final List<MovieCardModel> movies;
   MovieLoaded(this.movies);
 }
 

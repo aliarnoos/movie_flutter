@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/models/movie.dart';
+import '../../data/models/movie_card.dart';
 import '../../data/repositories/movie_repository.dart';
 
 part 'movie_state.dart';
