@@ -1,49 +1,50 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/movie_card.dart';
+
 class MovieCard extends StatelessWidget {
-  final String title;
-  final String releaseDate;
-  final String imageUrl;
+  final MovieCardModel movie;
 
   const MovieCard({
     super.key,
-    required this.title,
-    required this.releaseDate,
-    required this.imageUrl,
+    required this.movie,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 4.0,
-      margin: const EdgeInsets.all(8.0),
+      clipBehavior: Clip.antiAlias,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Image.network(
-            imageUrl,
+            movie.imageUrl,
             width: double.infinity,
             height: 200,
             fit: BoxFit.cover,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
-            child: Text(
-              'Release Date: $releaseDate',
-              style: TextStyle(
-                fontSize: 14.0,
-                color: Colors.grey[600],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  movie.title,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  'Released: ${movie.releaseDate}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[600],
+                  ),
+                ),
+                const SizedBox(height: 5),
+              ],
             ),
           ),
         ],
