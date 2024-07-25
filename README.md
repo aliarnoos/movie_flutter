@@ -6,6 +6,8 @@ A Flutter application that showcases trending movies, supporting infinite scroll
 
 This project was completed in less than 8 hours and represents my first entry into writing Flutter and Dart. Despite being new to these technologies, I found the experience enjoyable and the learning curve pleasantly manageable. I am eager to hear your feedback and look forward to improving and expanding my skills in this area.
 
+Note: the API key is left public for easier testing from your part, but will delete it shortly after.
+
 ## Screenshots
 
 Here are some screenshots of the app in action:
