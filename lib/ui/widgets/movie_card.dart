@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../data/models/movie_card.dart';
+import '../../data/models/movie.dart';
 
 class MovieCard extends StatelessWidget {
-  final MovieCardModel movie;
+  final MovieModel movie;
 
   const MovieCard({
     super.key,
