@@ -4,6 +4,7 @@ import '../../services/api_service.dart';
 
 abstract class MovieRepository {
   Future<List<MovieModel>> getTrendingMovies();
+  Future<MovieModel> getMovieDetails(int movieId);
 }
 
 class MovieRepositoryImpl implements MovieRepository {
@@ -21,6 +22,16 @@ class MovieRepositoryImpl implements MovieRepository {
           .toList();
     } catch (e) {
       throw Exception('Failed to fetch movies: ${e.toString()}');
+    }
+  }
+
+  @override
+  Future<MovieModel> getMovieDetails(int movieId) async {
+    try {
+      final jsonData = await apiService.fetchMovieDetails(movieId);
+      return MovieModel.fromJson(jsonData);
+    } catch (e) {
+      throw Exception('Failed to fetch movie details: ${e.toString()}');
     }
   }
 }
