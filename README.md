@@ -20,7 +20,7 @@ A Flutter application that showcases trending movies, supporting infinite scroll
 
 ## Architecture
 
-[Clean Architecture](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*bpZD35FYuNVZCzuW.png "")
+![Clean Architecture](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*bpZD35FYuNVZCzuW.png "")
 
 The application employs Clean Architecture principles for scalable, maintainable, and testable code:
 
