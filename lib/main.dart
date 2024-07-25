@@ -7,10 +7,12 @@ import 'services/api_service.dart';
 import 'ui/screens/movie_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider<MovieRepository>(
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: BlocProvider<MovieCubit>(
           create: (context) => MovieCubit(context.read<MovieRepository>()),
-          child: MovieScreen(),
+          child: const MovieScreen(),
         ),
       ),
     );
