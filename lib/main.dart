@@ -13,15 +13,14 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Movie List App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: BlocProvider(
-        create: (context) => MovieCubit(MovieRepositoryImpl(ApiService())),
-        child: MovieScreen(),
+    return RepositoryProvider<MovieRepository>(
+      create: (context) => MovieRepositoryImpl(ApiService()),
+      child: MaterialApp(
+        title: 'Movie App',
+        home: BlocProvider<MovieCubit>(
+          create: (context) => MovieCubit(context.read<MovieRepository>()),
+          child: MovieScreen(),
+        ),
       ),
     );
   }
