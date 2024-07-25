@@ -1,4 +1,5 @@
 class MovieModel {
+  final int id;
   final String title;
   final String imageUrl;
   final String releaseDate;
@@ -8,6 +9,7 @@ class MovieModel {
   final List<String>? spokenLanguages;
 
   MovieModel({
+    required this.id,
     required this.title,
     required this.imageUrl,
     required this.releaseDate,
@@ -19,6 +21,7 @@ class MovieModel {
 
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
+      id: json['id'] as int,
       title: json['title'] as String,
       imageUrl:
           'https://image.tmdb.org/t/p/w500${json['poster_path'] as String}',
@@ -37,6 +40,7 @@ class MovieModel {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'title': title,
       'poster_path':
           imageUrl.replaceFirst('https://image.tmdb.org/t/p/w500', ''),
