@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/repositories/movie_repository.dart';
-import '../../logic/cubit/movie_details_cubit.dart';
+import '../../state/cubit/movie_details_cubit.dart';
 import '../widgets/movie_details.dart';
 
 class MovieDetailsScreen extends StatelessWidget {

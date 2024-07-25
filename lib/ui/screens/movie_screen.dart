@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../logic/cubit/movie_cubit.dart';
+import '../../state/cubit/movie_cubit.dart';
 import '../widgets/movie_card.dart';
 
 class MovieScreen extends StatefulWidget {
