@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  final String baseUrl = 'https://api.themoviedb.org/3/genre/movie/list';
+  final String baseUrl = 'https://api.themoviedb.org/3';
   final String apiKey = '166fcac7b52dc2e16a40ebfb58bec49b';
 
   ApiService();
@@ -11,7 +11,7 @@ class ApiService {
   Future<List<dynamic>> fetchTrendingMovies() async {
     final response = await http.get(
       Uri.parse(
-          '$baseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc'),
+          '$baseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&p'),
     );
 
     if (response.statusCode == 200) {
