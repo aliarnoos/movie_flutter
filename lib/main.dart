@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'data/repositories/movie_repository.dart';
+import 'logic/cubit/movie_cubit.dart';
+import 'services/api_service.dart';
+import 'ui/screens/movie_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Movies List',
-      debugShowCheckedModeBanner: false,
+      title: 'Movie List App',
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          primaryColor: Colors.white,
-          textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.white))),
-      home: Scaffold(),
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: BlocProvider(
+        create: (context) => MovieCubit(MovieRepositoryImpl(ApiService())),
+        child: MovieScreen(),
+      ),
     );
   }
 }
