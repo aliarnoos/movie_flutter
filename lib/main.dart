@@ -5,8 +5,10 @@ import 'data/repositories/movie_repository.dart';
 import 'state/cubit/movie_cubit.dart';
 import 'services/api_service.dart';
 import 'ui/screens/movie_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
