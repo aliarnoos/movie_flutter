@@ -1,36 +1,70 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/repositories/movie_repository.dart';
 import '../../logic/cubit/movie_cubit.dart';
 import '../widgets/movie_card.dart';
 
-class MovieScreen extends StatelessWidget {
+class MovieScreen extends StatefulWidget {
+  @override
+  _MovieScreenState createState() => _MovieScreenState();
+}
+
+class _MovieScreenState extends State<MovieScreen> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_onScroll);
+    _loadInitialMovies();
+  }
+
+  void _loadInitialMovies() {
+    context.read<MovieCubit>().loadMovies(isInitialLoad: true);
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      context.read<MovieCubit>().loadMovies();
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_onScroll);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          MovieCubit(context.read<MovieRepository>())..loadMovies(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Trending Movies'),
-        ),
-        body: BlocBuilder<MovieCubit, MovieState>(
-          builder: (context, state) {
-            if (state is MovieLoading) {
-              return Center(child: CircularProgressIndicator());
-            } else if (state is MovieLoaded) {
-              return ListView.builder(
-                itemCount: state.movies.length,
-                itemBuilder: (context, index) =>
-                    MovieCard(movie: state.movies[index]),
-              );
-            } else if (state is MovieError) {
-              return Center(child: Text(state.message));
-            } else {
-              return Center(child: Text('Press a button to load movies'));
-            }
-          },
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Trending Movies'),
+      ),
+      body: BlocBuilder<MovieCubit, MovieState>(
+        builder: (context, state) {
+          if (state is MovieLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is MovieLoaded) {
+            return ListView.builder(
+              controller: _scrollController,
+              itemCount: state.movies.length,
+              itemBuilder: (context, index) =>
+                  MovieCard(movie: state.movies[index]),
+            );
+          } else if (state is MovieError) {
+            return Center(child: Text(state.message));
+          }
+          return Center(child: Text('Press a button to load movies'));
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            context.read<MovieCubit>().loadMovies(isInitialLoad: true),
+        tooltip: 'Refresh Movies',
+        child: Icon(Icons.refresh),
       ),
     );
   }

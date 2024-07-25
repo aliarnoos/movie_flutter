@@ -3,7 +3,7 @@ import 'package:movie_flutter/data/models/movie.dart';
 import '../../services/api_service.dart';
 
 abstract class MovieRepository {
-  Future<List<MovieModel>> getTrendingMovies();
+  Future<List<MovieModel>> getTrendingMovies({required int page});
   Future<MovieModel> getMovieDetails(int movieId);
 }
 
@@ -13,9 +13,9 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this.apiService);
 
   @override
-  Future<List<MovieModel>> getTrendingMovies() async {
+  Future<List<MovieModel>> getTrendingMovies({required int page}) async {
     try {
-      final jsonData = await apiService.fetchTrendingMovies();
+      final jsonData = await apiService.fetchTrendingMovies(page);
       return jsonData
           .toList()
           .map<MovieModel>((json) => MovieModel.fromJson(json))

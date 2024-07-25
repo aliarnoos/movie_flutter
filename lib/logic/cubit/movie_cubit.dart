@@ -6,14 +6,31 @@ part 'movie_state.dart';
 
 class MovieCubit extends Cubit<MovieState> {
   final MovieRepository repository;
+  int currentPage = 1;
 
   MovieCubit(this.repository) : super(MovieInitial());
 
-  void loadMovies() {
-    emit(MovieLoading());
-    repository.getTrendingMovies().then(
+  void loadMovies({bool isInitialLoad = false}) {
+    if (isInitialLoad) {
+      currentPage = 1;
+      emit(MovieLoading());
+    } else {
+      currentPage++;
+    }
+
+    repository.getTrendingMovies(page: currentPage).then(
       (movies) {
-        emit(MovieLoaded(movies));
+        if (isInitialLoad || currentPage == 1) {
+          emit(MovieLoaded(movies));
+        } else {
+          final currentState = state;
+          if (currentState is MovieLoaded) {
+            emit(MovieLoaded([
+              ...currentState.movies,
+              ...movies
+            ])); // Append new movies to the current list
+          }
+        }
       },
       onError: (error) {
         emit(MovieError(error.toString()));

@@ -8,10 +8,10 @@ class ApiService {
   ApiService();
 
   // Fetch a list of trending movies
-  Future<List<dynamic>> fetchTrendingMovies() async {
+  Future<List<dynamic>> fetchTrendingMovies(int page) async {
     final response = await http.get(
       Uri.parse(
-          '$baseUrl/discover/movie?api_key=$apiKey&sort_by=popularity.desc&p'),
+          '$baseUrl/discover/movie?api_key=$apiKey&include_adult=false&page=$page&sort_by=popularity.desc&p'),
     );
 
     if (response.statusCode == 200) {
