@@ -60,12 +60,6 @@ class _MovieScreenState extends State<MovieScreen> {
           return Center(child: Text('Press a button to load movies'));
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            context.read<MovieCubit>().loadMovies(isInitialLoad: true),
-        tooltip: 'Refresh Movies',
-        child: Icon(Icons.refresh),
-      ),
     );
   }
 }
