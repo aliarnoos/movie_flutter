@@ -42,10 +42,10 @@ class InfoSection extends StatelessWidget {
   final String value;
 
   const InfoSection({
-    Key? key,
+    super.key,
     required this.title,
     required this.value,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +70,7 @@ class InfoSection extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          const SizedBox(
-              height: 8), // Adds more space at the bottom of each section
+          const SizedBox(height: 8),
         ],
       ),
     );

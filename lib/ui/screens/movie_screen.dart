@@ -4,6 +4,8 @@ import '../../logic/cubit/movie_cubit.dart';
 import '../widgets/movie_card.dart';
 
 class MovieScreen extends StatefulWidget {
+  const MovieScreen({super.key});
+
   @override
   _MovieScreenState createState() => _MovieScreenState();
 }
@@ -41,12 +43,12 @@ class _MovieScreenState extends State<MovieScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trending Movies'),
+        title: const Text('Trending Movies'),
       ),
       body: BlocBuilder<MovieCubit, MovieState>(
         builder: (context, state) {
           if (state is MovieLoading) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (state is MovieLoaded) {
             return ListView.builder(
               controller: _scrollController,
@@ -57,7 +59,7 @@ class _MovieScreenState extends State<MovieScreen> {
           } else if (state is MovieError) {
             return Center(child: Text(state.message));
           }
-          return Center(child: Text('Press a button to load movies'));
+          return const Center(child: Text('Press a button to load movies'));
         },
       ),
     );
